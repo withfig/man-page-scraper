@@ -1,0 +1,1 @@
+CMD=$1 npm run generate
