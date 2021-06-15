@@ -7,6 +7,7 @@
 
 // Dependencies
 import fs from "fs";
+import path from "path";
 import { sleep } from "sleep";
 import execSh from "exec-sh";
 import { parse } from "node-html-parser";
@@ -141,12 +142,18 @@ function isCompressed(manPage: string) {
 let cmd = process.argv[2];
 getFigCompletionObjectFromManPageOfACommand(cmd).then((figCompletionSpec) => {
   // prepare file
-  const file = `export const completionSpec: Fig.Spec = 
-${JSON.stringify(figCompletionSpec)}
-`;
+  const file = `var completionSpec = ${JSON.stringify(figCompletionSpec)}`;
   // write file
-  fs.writeFileSync(`./${cmd}.ts`, file, "utf8");
-  console.log(
-    `Now you just have to move the file ./${cmd}.ts to the \`dev\` folder on Fig's autocomplete source directory`
+  fs.writeFileSync(
+    path.resolve(
+      `${
+        // as fig is planning to go cross-platform, this is necessary
+        process.env[process.platform == "win32" ? "USERPROFILE" : "HOME"]
+      }/.fig/autocomplete/${cmd}.js`
+    ),
+    file,
+    "utf8"
   );
+  console.log("Installation done!");
+  process.exit(0);
 });
