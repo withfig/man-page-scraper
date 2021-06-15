@@ -1,0 +1,36 @@
+{
+  "name": "man-page-scraper",
+  "version": "1.0.0",
+  "description": "A script that parses a MANual page of a command and turns it into a Fig-compatible completion spec file.",
+  "main": "index.js",
+  "scripts": {
+    "generate": "ts-node src/index.ts $CMD"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/withfig/man-page-scraper.git"
+  },
+  "keywords": [
+    "fig",
+    "autocomplete",
+    "man"
+  ],
+  "author": "4lon3ly0",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/withfig/man-page-scraper/issues"
+  },
+  "homepage": "https://github.com/withfig/man-page-scraper#readme",
+  "dependencies": {
+    "@types/node": "^15.12.2",
+    "exec-sh": "^0.4.0",
+    "manolo": "^0.1.0",
+    "node-html-parser": "^3.3.5",
+    "pretty": "^2.0.0",
+    "remove-trailing-spaces": "^1.0.8",
+    "sleep": "^6.3.0",
+    "ts-node": "^10.0.0",
+    "tsc": "^2.0.3",
+    "typescript": "^4.3.2"
+  }
+}
