@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
-
 /*
  ! This script creates a fig command spec completion file based on a man page. only parses flags, not templates because its impossible.
  ! Manual created fig command spec completion files should be used over the generated ones by this script.
